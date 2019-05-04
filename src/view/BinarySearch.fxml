@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="binarySearch.BinarySearchController">
+   <top>
+      <AnchorPane prefHeight="80.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="290.0" layoutY="35.0" text="Array" />
+            <Button layoutX="658.0" layoutY="30.0" mnemonicParsing="false" text="ENTER" />
+            <TextField layoutX="438.0" layoutY="28.0" />
+            <Button layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+         </children>
+      </AnchorPane>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="70.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="597.0" layoutY="23.0" mnemonicParsing="false" text="Search" />
+            <TextField layoutX="390.0" layoutY="23.0" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <right>
+      <AnchorPane prefHeight="493.0" prefWidth="65.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="11.0" layoutY="209.0" mnemonicParsing="false" text="Next" />
+         </children>
+      </AnchorPane>
+   </right>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

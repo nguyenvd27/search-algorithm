@@ -89,23 +89,49 @@ public class SequentialSearchController {
 			System.out.println("Tim thay "+search+" o vi tri thu "+(result+1));
 			showKetQua.setText("Tìm thấy phần tử "+search+" ở vị trí thứ "+(result+1));
 			arrayCircleK.get(result).changeBackGround(Color.RED);
+			arrayCircleK.get(result).changeBorder(Color.GREEN);
+		}
+		
+		if(result>=0) {
+			//tao circle to len
+			//create a timeline for moving the circle
+	        Timeline timeline = new Timeline();
+	        timeline.setCycleCount(Timeline.INDEFINITE);
+	        timeline.setAutoReverse(true);
+	        //create a keyValue with factory: scaling the circle 2times
+	        KeyValue keyValueX = new KeyValue(arrayCircleK.get(result).scaleXProperty(), 1.25);
+	        KeyValue keyValueY = new KeyValue(arrayCircleK.get(result).scaleYProperty(), 1.25);
+	        //create a keyFrame, the keyValue is reached at time 2s
+	        Duration duration = Duration.millis(1000);
+	        KeyFrame keyFrame = new KeyFrame(duration , keyValueX, keyValueY);
+	        //add the keyframe to the timeline
+	        timeline.getKeyFrames().add(keyFrame);
+	        timeline.play();
 		}
 		
 		
-//		CircleK circleK = new CircleK(11, 100, 200);
-//		StackPane stackPane = new StackPane();
-//		stackPane.getChildren().addAll(circleK, circleK.getText());
-//		stackPane.setLayoutX(circleK.getX());
-//		stackPane.setLayoutY(circleK.getY());
+//		circle = new CircleK(0);   
+//	    circle.setRadius(30.0f);
+//	    circle.setFill(Color.BROWN); 
+//	    circle.setStrokeWidth(0);
+//	      
+//	    StackPane stackPane = new StackPane();
+//		stackPane.getChildren().addAll(circle);
+//		stackPane.setLayoutX(100);
+//		stackPane.setLayoutY(100);
 //		paneShow.getChildren().add(stackPane);
+//		
+//		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), 
+//                new KeyValue(circle.layoutXProperty(), 300)));
+//        timeline.setCycleCount(2);
+//        timeline.play();
+		
+		
 		
 		//Drawing a Circle 
-	      circle = new CircleK(0); 
-//	      circle.setCenterX(300.0f); 
-//	      circle.setCenterY(300.0f); 
-	      
+	      circle = new CircleK(0);   
 	      circle.setRadius(30.0f);
-	      circle.setFill(Color.BROWN); 
+	      circle.setFill(Color.web("#B9FC90")); 
 	      circle.setStrokeWidth(0); 
 	       
 	      TranslateTransition translateTransition = new TranslateTransition(); 
@@ -135,7 +161,6 @@ public class SequentialSearchController {
 			stackPane.setLayoutY(100);
 			paneShow.getChildren().add(stackPane);
 			
-			//arrayCircleK.get(result).changeBackGround(Color.YELLOW);
 	}
 	
 	int xnext=100,ynext=100;
@@ -147,7 +172,7 @@ public class SequentialSearchController {
 		
 		if(dem>0) {
 			newCircleK.delete();
-			arrayCircleK.get(dem-1).changeBorder(Color.BLUE);
+			arrayCircleK.get(dem-1).changeBorder(Color.web("#ff5050"));
 		}
 		newCircleK = new CircleK(search, xnext, ynext);
 		StackPane stackPane = new StackPane();
@@ -156,12 +181,27 @@ public class SequentialSearchController {
 		stackPane.setLayoutY(newCircleK.getY());
 		paneShow.getChildren().add(stackPane);
 		
-		arrayCircleK.get(dem).changeBorder(Color.YELLOW);
+		arrayCircleK.get(dem).changeBorder(Color.GREEN);
 		
 		if(arrayCircleK.get(dem).getNumber()==search) {
 			arrayCircleK.get(dem).changeBackGround(Color.RED);
 			showKetQua.setText("Tìm thấy phần tử "+search+" ở vị trí thứ "+(dem+1));
 			nextButton.setVisible(false);
+			
+			//tao circle to len
+			//create a timeline for moving the circle
+	        Timeline timeline = new Timeline();
+	        timeline.setCycleCount(Timeline.INDEFINITE);
+	        timeline.setAutoReverse(true);
+	        //create a keyValue with factory: scaling the circle 2times
+	        KeyValue keyValueX = new KeyValue(arrayCircleK.get(dem).scaleXProperty(), 1.25);
+	        KeyValue keyValueY = new KeyValue(arrayCircleK.get(dem).scaleYProperty(), 1.25);
+	        //create a keyFrame, the keyValue is reached at time 2s
+	        Duration duration = Duration.millis(1000);
+	        KeyFrame keyFrame = new KeyFrame(duration , keyValueX, keyValueY);
+	        //add the keyframe to the timeline
+	        timeline.getKeyFrames().add(keyFrame);
+	        timeline.play();
 		}
 		
 		if(dem>=size-1 && arrayCircleK.get(dem).getNumber()!=search) {
@@ -185,10 +225,8 @@ public class SequentialSearchController {
 			newCircleK.delete();
 		}
 		
-		//circle.deleteRun();
 		nextButton.setVisible(true);
 		showKetQua.setText("");
-		//paneShow.clearConstraints(paneRun);
 	}
 	
 	public void goBack(ActionEvent event) throws IOException {
@@ -198,6 +236,8 @@ public class SequentialSearchController {
 		loader.setLocation(getClass().getResource("../view/MainScene.fxml"));
 		Parent mainScene = loader.load();
 		Scene scene = new Scene(mainScene);
+		scene.getStylesheets().add(getClass().getResource("../application/application.css").toExternalForm());
+		stage.setTitle("OOP Project");
 		stage.setScene(scene);
 	}
 }

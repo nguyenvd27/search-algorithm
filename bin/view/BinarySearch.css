@@ -5,16 +5,29 @@
 }
 
 .button {
-	/*-fx-button-border: 0.15em solid #F9C23C;*/
 	-fx-background-color: #666699;
-	-fx-border-width: 3;
+	-fx-border-width: 2;
     -fx-border-color: #ffff99;
     -fx-border-radius:7px;
     -fx-background-radius:7px;
 }
 
 .button:hover {
-	-fx-border-width: 6;
+	-fx-border-width: 4;
 	-fx-background-color: #990033;
     -fx-border-color: #99ffcc;
+}
+
+.textfield {
+	-fx-background-color: #990033;
+	-fx-border-width: 2;
+    -fx-border-color: #ffff99;
+    -fx-border-radius:7px;
+    -fx-background-radius:7px;
+}
+
+.textfield:hover {
+	-fx-border-width: 4;
+    -fx-border-color: #99ffcc;
+    -fx-background-color: #ffffcc;
 }

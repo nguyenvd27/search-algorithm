@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -7,8 +9,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1101.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SceneController">
    <children>
-      <Button layoutX="538.0" layoutY="195.0" mnemonicParsing="false" onAction="#ChangeSequentialSearchScene" text="Sequential Search" />
-      <Button layoutX="538.0" layoutY="314.0" mnemonicParsing="false" onAction="#ChangeBianrySearchScene" text="Binary Search" />
-      <Button layoutX="551.0" layoutY="432.0" mnemonicParsing="false" text="A*" />
+      <Button layoutX="403.0" layoutY="194.0" mnemonicParsing="false" onAction="#ChangeSequentialSearchScene" prefHeight="59.0" prefWidth="296.0" text="Sequential Search" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button layoutX="403.0" layoutY="285.0" mnemonicParsing="false" onAction="#ChangeBianrySearchScene" prefHeight="59.0" prefWidth="296.0" text="Binary Search" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button layoutX="403.0" layoutY="375.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="296.0" text="A*" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
    </children>
 </AnchorPane>

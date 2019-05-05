@@ -39,6 +39,8 @@ public class BinarySearchController {
 	private Label midLabel;
 	@FXML
 	private Label rightLabel;
+	@FXML
+	private Label showKetQua;
 	
 	int array[]=new int[20];
 	int size,left=0,right=0;
@@ -100,19 +102,21 @@ public class BinarySearchController {
 	}
 	
 	public void binarySearch(ActionEvent event) {
-		//System.out.println("hello");
 		String strSearch = searchTextField.getText();
 		search = Integer.parseInt(strSearch);
-		//System.out.println(search);
+
 		int left = 0, right= arrayCircleKSorted.size()-1;
 		System.out.println(right);
 		BinarySearch obj = new BinarySearch();
 		int result = obj.binarySearch(arrayCircleKSorted, left, right, search);
 		if(result == -1) {
 			System.out.println("khong tim thay");
+			showKetQua.setText("Không tìm thấy phần tử "+search + " trong mảng");
 		}else {
 			System.out.println("Index "+result);
+			showKetQua.setText("Tìm thấy phần tử "+search+" ở vị trí "+(result+1));
 			arrayCircleKSorted.get(result).changeBackGround(Color.RED);
+			arrayCircleKSorted.get(result).changeBorder(Color.GREEN);
 			//animation
             Timeline timeline = new Timeline();
             timeline.setCycleCount(Timeline.INDEFINITE);
@@ -142,36 +146,32 @@ public class BinarySearchController {
 			System.out.println(left);
             int mid = left + (right - left) / 2; 
             
-            midLabel.setText("mid: "+ mid);
-        	leftLabel.setText("Left : " + left);
-        	rightLabel.setText("Right: "+ right);
+            midLabel.setText("MID: "+ mid);
+        	leftLabel.setText("LEFT : " + left);
+        	rightLabel.setText("RIGHT: "+ right);
         	
             System.out.println(arrayCircleKSorted.get(mid).getNumber()+" va "+ search);
             if (arrayCircleKSorted.get(mid).getNumber() == search) {
-            	
+            	showKetQua.setText("Tìm thấy phần tử "+search+" ở vị trí "+(mid+1));
             	for(CircleK circleK: arrayCircleKSorted) {
-            		circleK.changeBackGround(Color.GREEN);
+            		circleK.changeBackGround(Color.web("#B9FC90"));
             	}
             	
             	arrayCircleKSorted.get(mid).changeBackGround(Color.RED);
+            	arrayCircleKSorted.get(mid).changeBorder(Color.GREEN);
             	
             	//create a timeline for moving the circle
                 Timeline timeline = new Timeline();
                 timeline.setCycleCount(Timeline.INDEFINITE);
                 timeline.setAutoReverse(true);
-                
-              //create a keyValue with factory: scaling the circle 2times
+                //create a keyValue with factory: scaling the circle 2times
                 KeyValue keyValueX = new KeyValue(arrayCircleKSorted.get(mid).scaleXProperty(), 1.25);
                 KeyValue keyValueY = new KeyValue(arrayCircleKSorted.get(mid).scaleYProperty(), 1.25);
-         
                 //create a keyFrame, the keyValue is reached at time 2s
                 Duration duration = Duration.millis(1000);
-                
                 KeyFrame keyFrame = new KeyFrame(duration , keyValueX, keyValueY);
-                
                 //add the keyframe to the timeline
                 timeline.getKeyFrames().add(keyFrame);
-         
                 timeline.play();
             }
                 
@@ -179,7 +179,7 @@ public class BinarySearchController {
             	//return binarySearch(arrayCircleK, l, mid - 1, x);
             	
             	for(CircleK circleK: arrayCircleKSorted) {
-            		circleK.changeBackGround(Color.GREEN);
+            		circleK.changeBackGround(Color.web("#B9FC90"));
             	}
             	for(int i=left;i<=mid-1;i++) {
             		arrayCircleKSorted.get(i).changeBackGround(Color.RED);
@@ -192,18 +192,20 @@ public class BinarySearchController {
             	//return binarySearch(arrayCircleK, mid + 1, r, x);
             	
             	for(CircleK circleK: arrayCircleKSorted) {
-            		circleK.changeBackGround(Color.GREEN);
+            		circleK.changeBackGround(Color.web("#B9FC90"));
             	}
             	for(int i=mid+1;i<=right;i++) {
             		arrayCircleKSorted.get(i).changeBackGround(Color.RED);
             	}
             	
             	left=mid+1;
-            }
-             
-        } 
+            } 
+        } else {
+        	showKetQua.setText("Không tìm thấy phần tử "+search + " trong mảng");
+        }
   
 	}
+	
 	public void reset(ActionEvent event) {
 		for(CircleK circleK: arrayCircleK) {
 			circleK.delete();
@@ -216,6 +218,11 @@ public class BinarySearchController {
 		x=100;
 		left=0;
 		right=size-1;
+		
+		leftLabel.setText("LEFT: ");
+		rightLabel.setText("RIGHT: ");
+		midLabel.setText("MID: ");
+		showKetQua.setText("");
 	}
 	
 	public void goBack(ActionEvent event) throws IOException {
@@ -225,6 +232,8 @@ public class BinarySearchController {
 		loader.setLocation(getClass().getResource("../view/MainScene.fxml"));
 		Parent mainScene = loader.load();
 		Scene scene = new Scene(mainScene);
+		scene.getStylesheets().add(getClass().getResource("../application/application.css").toExternalForm());
+		stage.setTitle("OOP Project");
 		stage.setScene(scene);
 	}
 }

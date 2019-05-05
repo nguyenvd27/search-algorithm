@@ -2,6 +2,7 @@ package shape;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class CircleK extends Circle implements Comparable<CircleK>{
@@ -42,12 +43,13 @@ public class CircleK extends Circle implements Comparable<CircleK>{
 	public CircleK(Integer number) {
 		super();
 		this.number = number;
-		this.setFill(Color.GREEN);//set ben trong
-		this.setStroke(Color.BLUE);// set vien
+		this.setFill(Color.web("#A7FF71"));//set ben trong
+		this.setStroke(Color.web("#ff5050"));// set vien
 		this.setStrokeWidth(3);// set do rong cua vien
 		this.setRadius(30);
 		
 		this.text = new Text(number.toString());
+		text.setFont(Font.font(20));
 		text.setStroke(Color.BLACK);
 	}
 	
@@ -56,12 +58,13 @@ public class CircleK extends Circle implements Comparable<CircleK>{
 		this.number = number;
 		this.x = layoutX;
 		this.y = layoutY;
-		this.setFill(Color.GREEN);
-		this.setStroke(Color.BLUE);
+		this.setFill(Color.web("#B9FC90"));
+		this.setStroke(Color.web("#ff5050"));
 		this.setStrokeWidth(3);
 		this.setRadius(30);
 		
 		this.text = new Text(number.toString());
+		text.setFont(Font.font(20));
 		text.setStroke(Color.BLACK);
 	}
 	

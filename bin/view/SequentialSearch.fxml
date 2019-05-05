@@ -9,22 +9,34 @@
 
 <BorderPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sequentialSearch.SequentialSearchController">
    <top>
-      <AnchorPane prefHeight="58.0" prefWidth="811.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="71.0" prefWidth="1134.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="395.0" layoutY="20.0" text="Array" />
-            <Button layoutX="647.0" layoutY="12.0" mnemonicParsing="false" onAction="#ArrayInput" prefHeight="31.0" prefWidth="62.0" text="ENTER" />
-            <TextField fx:id="arrayTextField" layoutX="438.0" layoutY="12.0" prefHeight="31.0" prefWidth="203.0" />
-            <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+            <Label layoutX="332.0" layoutY="22.0" prefHeight="36.0" prefWidth="62.0" text="Array" textFill="#cd1414">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Button layoutX="628.0" layoutY="21.0" mnemonicParsing="false" onAction="#ArrayInput" prefHeight="39.0" prefWidth="76.0" text="ENTER" textFill="WHITE" />
+            <TextField fx:id="arrayTextField" layoutX="418.0" layoutY="19.0" prefHeight="42.0" prefWidth="203.0" promptText="Input Array" styleClass="textfield">
+               <font>
+                  <Font size="17.0" />
+               </font></TextField>
+            <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#goBack" prefHeight="41.0" prefWidth="73.0" text="BACK" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Button layoutX="713.0" layoutY="21.0" mnemonicParsing="false" onAction="#reset" prefHeight="39.0" prefWidth="73.0" text="RESET" textFill="WHITE" />
          </children>
       </AnchorPane>
    </top>
    <bottom>
-      <AnchorPane prefHeight="59.0" prefWidth="784.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="58.0" prefWidth="1134.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="searchTextField" layoutX="451.0" layoutY="14.0" prefHeight="31.0" prefWidth="77.0" />
-            <Button layoutX="591.0" layoutY="14.0" mnemonicParsing="false" onAction="#SequentialSearch" prefHeight="31.0" prefWidth="63.0" text="Search" />
-            <Button fx:id="nextButton" layoutX="536.0" layoutY="14.0" mnemonicParsing="false" onAction="#next" prefHeight="31.0" prefWidth="49.0" text="Next" />
-            <Button layoutX="845.0" layoutY="17.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
+            <TextField fx:id="searchTextField" layoutX="439.0" layoutY="10.0" prefHeight="39.0" prefWidth="77.0" promptText="Search" styleClass="textfield">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Button layoutX="593.0" layoutY="11.0" mnemonicParsing="false" onAction="#SequentialSearch" prefHeight="38.0" prefWidth="84.0" text="SEARCH" textFill="WHITE" />
+            <Button fx:id="nextButton" layoutX="523.0" layoutY="10.0" mnemonicParsing="false" onAction="#next" prefHeight="38.0" prefWidth="63.0" text="NEXT" textFill="WHITE" />
          </children>
       </AnchorPane>
    </bottom>
@@ -32,14 +44,14 @@
       <AnchorPane prefHeight="475.0" prefWidth="74.0" BorderPane.alignment="CENTER" />
    </right>
    <center>
-      <AnchorPane prefHeight="583.0" prefWidth="1073.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="559.0" prefWidth="1060.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="showKetQua" layoutX="375.0" layoutY="525.0" prefHeight="44.0" prefWidth="451.0">
+            <Label fx:id="showKetQua" layoutX="327.0" layoutY="295.0" prefHeight="55.0" prefWidth="519.0" textFill="WHITE">
                <font>
-                  <Font size="24.0" />
+                  <Font size="26.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="paneShow" layoutX="5.0" layoutY="6.0" prefHeight="245.0" prefWidth="1055.0" />
+            <AnchorPane fx:id="paneShow" layoutX="5.0" layoutY="46.0" prefHeight="221.0" prefWidth="1055.0" />
          </children></AnchorPane>
    </center>
 </BorderPane>

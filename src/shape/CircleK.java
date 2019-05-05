@@ -79,6 +79,11 @@ public class CircleK extends Circle implements Comparable<CircleK>{
 		this.text.setVisible(false);
 	}
 	
+	public void deleteRun() {
+		this.setFill(null);
+		this.setStroke(null);
+	}
+	
 	@Override
 	public int compareTo(CircleK circleK) {
 		

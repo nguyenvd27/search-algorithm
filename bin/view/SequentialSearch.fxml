@@ -39,7 +39,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="paneShow" layoutX="5.0" layoutY="6.0" prefHeight="251.0" prefWidth="1055.0" />
+            <AnchorPane fx:id="paneShow" layoutX="5.0" layoutY="6.0" prefHeight="245.0" prefWidth="1055.0" />
          </children></AnchorPane>
    </center>
 </BorderPane>

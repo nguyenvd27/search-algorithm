@@ -23,11 +23,10 @@ public class Square {
 		gc.setLineWidth(5);
 		
 		// Create a square
-		gc.setFill(Color.GREEN);
+		gc.setFill(getBackgroundColor());
 		gc.fillRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
-		gc.setStroke(Color.BLUE);
-		
-		
+		gc.setStroke(getBorderColor());
+			
 		// Outline the square border
 		gc.strokeRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
 		// Draw the id number inside the circle
@@ -35,8 +34,6 @@ public class Square {
 		gc.setFill(getFontColor());
 		gc.fillText(getKey(),point.getX()-10, point.getY()+5);
 	}
-	
-	
 	
 	// generate getter and setter
 	public int getRADIUS() {
@@ -76,19 +73,20 @@ public class Square {
 		this.fontColor = fontColor;
 	}
 	
-	
-	
 	//generate constructor
 	public Square(Integer searchNum) {
 		super();
 		this.searchNum = searchNum;
+		this.backgroundColor = Color.GREEN;
+		this.borderColor = Color.BLUE;
+		this.fontColor = Color.web("#FCFCFC");
 	}
 	public Square(Integer searchNum, Point2D point) {
 		super();
 		this.searchNum = searchNum;
 		this.point = point;
 		this.backgroundColor = Color.GREEN;
-		this.setBorderColor(Color.BLUE);
+		this.borderColor = Color.BLUE;
 		this.fontColor = Color.web("#FCFCFC");
 	}
 	
@@ -98,31 +96,12 @@ public class Square {
 		return Integer.toString(getSearchNum());
 	}
 	
-	
-	public void setHighlighter(boolean highlight) {
-		if (highlight) {
-			setFontColor(Color.rgb(49, 116, 222));
-			setBackgroundColor(Color.rgb(155, 244, 167));
-			setBorderColor(Color.rgb(49, 116, 222));
-	
-		} else {
-			setFontColor(Color.web("#FCFCFC"));
-			setBackgroundColor(Color.rgb(49, 116, 222));
-			setBorderColor(Color.rgb(99, 99, 99));
-		}
-	}
-	
-	
-public void draw2(GraphicsContext gc) {
-		
-		// Sets the width of the lines
+	//change color object square	
+	public void searchNumber(GraphicsContext gc) {
 		gc.setLineWidth(5);
-		
-		// Create a square
 		gc.setFill(Color.RED);
 		gc.fillRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
 		gc.setStroke(Color.YELLOW);
-		
 		
 		// Outline the square border
 		gc.strokeRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
@@ -131,7 +110,43 @@ public void draw2(GraphicsContext gc) {
 		gc.setFill(getFontColor());
 		gc.fillText(getKey(),point.getX()-10, point.getY()+5);
 	}
+	public void changeColorSquare(GraphicsContext gc) {
+		gc.setLineWidth(5);
+		gc.setFill(Color.RED);
+		gc.fillRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
+		gc.setStroke(Color.YELLOW);
+		
+		// Outline the square border
+		gc.strokeRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
+		// Draw the id number inside the circle
+		gc.setFont(font);
+		gc.setFill(getFontColor());
+		gc.fillText(getKey(),point.getX()-10, point.getY()+5);
+	}
+
+	public void changeColorBorder(GraphicsContext gc) {
+		gc.setLineWidth(5);
+		gc.setFill(Color.GREEN);
+		gc.fillRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
+		gc.setStroke(Color.ORANGE);
+		
+		gc.strokeRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
+		// Draw the id number inside the circle
+		gc.setFont(font);
+		gc.setFill(getFontColor());
+		gc.fillText(getKey(),point.getX()-10, point.getY()+5);
+	}
 	
+	public void deleteSquare(GraphicsContext gc) {
+		gc.setLineWidth(7);
+		gc.setFill(Color.web("#F5F5F5"));
+		gc.fillRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
+		gc.setStroke(Color.web("#F5F5F5"));
+		gc.strokeRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
+		gc.setFont(null);
+		//gc.setFill(null);
+		gc.fillText("", point.getX()-10, point.getY()+5);
+	}
 	
 	@Override
 	public String toString() {
@@ -140,3 +155,14 @@ public void draw2(GraphicsContext gc) {
 				" (x,y) = ("  + point.getX() + ", " + point.getY() + ")";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+

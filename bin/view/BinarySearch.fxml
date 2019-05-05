@@ -10,28 +10,37 @@
       <AnchorPane prefHeight="80.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="290.0" layoutY="35.0" text="Array" />
-            <Button layoutX="658.0" layoutY="30.0" mnemonicParsing="false" text="ENTER" />
-            <TextField layoutX="438.0" layoutY="28.0" />
+            <Button layoutX="658.0" layoutY="30.0" mnemonicParsing="false" onAction="#ArrayInput" text="ENTER" />
+            <TextField fx:id="arrayTextField" layoutX="438.0" layoutY="28.0" />
             <Button layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+            <Button layoutX="749.0" layoutY="30.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
          </children>
       </AnchorPane>
    </top>
    <bottom>
       <AnchorPane prefHeight="70.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="597.0" layoutY="23.0" mnemonicParsing="false" text="Search" />
-            <TextField layoutX="390.0" layoutY="23.0" />
+            <Button layoutX="596.0" layoutY="17.0" mnemonicParsing="false" onAction="#binarySearch" prefHeight="31.0" prefWidth="63.0" text="Search" />
+            <TextField fx:id="searchTextField" layoutX="430.0" layoutY="16.0" prefHeight="32.0" prefWidth="92.0" />
+            <Button layoutX="538.0" layoutY="17.0" mnemonicParsing="false" onAction="#next" prefHeight="31.0" prefWidth="49.0" text="Next" />
          </children>
       </AnchorPane>
    </bottom>
    <right>
-      <AnchorPane prefHeight="493.0" prefWidth="65.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button layoutX="11.0" layoutY="209.0" mnemonicParsing="false" text="Next" />
-         </children>
-      </AnchorPane>
+      <AnchorPane prefHeight="493.0" prefWidth="65.0" BorderPane.alignment="CENTER" />
    </right>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="paneShow" layoutX="5.0" layoutY="5.0" prefHeight="279.0" prefWidth="1024.0">
+               <children>
+                  <Label layoutX="31.0" layoutY="101.0" text="Sorted" />
+               </children>
+            </AnchorPane>
+            <Button layoutX="752.0" layoutY="443.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
+            <Label fx:id="leftLabel" layoutX="290.0" layoutY="391.0" text="Left" />
+            <Label fx:id="midLabel" layoutX="393.0" layoutY="391.0" text="mid" />
+            <Label fx:id="rightLabel" layoutX="502.0" layoutY="391.0" text="right" />
+         </children></AnchorPane>
    </center>
 </BorderPane>

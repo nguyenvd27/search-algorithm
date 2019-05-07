@@ -65,7 +65,7 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Label fx:id="showKetQua" layoutX="345.0" layoutY="210.0" prefHeight="52.0" prefWidth="429.0" textFill="WHITE">
+                  <Label fx:id="showKetQua" layoutX="345.0" layoutY="210.0" prefHeight="52.0" prefWidth="578.0" textFill="WHITE">
                      <font>
                         <Font size="26.0" />
                      </font>

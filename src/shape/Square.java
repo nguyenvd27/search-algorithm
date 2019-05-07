@@ -1,168 +1,101 @@
 package shape;
 
-import javafx.geometry.Point2D;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
-public class Square {
+public class Square extends Rectangle implements Comparable<Square>{
+	private Integer number;
+	private Text text;
+	private Integer xx;// vi tri xuat hien tren truc Ox
+	private Integer yy;// vi tri xuat hien tren truc Oy
 	
-	Font font =  Font.font("Cooper Black", FontWeight.BOLD, 16);
-	int RADIUS = 26;
-	private Integer searchNum;
-	
-	private Point2D point;
-	private Color backgroundColor;
-	private Color borderColor;
-	private Color fontColor;
-	
-	public void draw(GraphicsContext gc) {
-		
-		// Sets the width of the lines
-		gc.setLineWidth(5);
-		
-		// Create a square
-		gc.setFill(getBackgroundColor());
-		gc.fillRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
-		gc.setStroke(getBorderColor());
-			
-		// Outline the square border
-		gc.strokeRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
-		// Draw the id number inside the circle
-		gc.setFont(font);
-		gc.setFill(getFontColor());
-		gc.fillText(getKey(),point.getX()-10, point.getY()+5);
+	public Integer getNumber() {
+		return number;
 	}
-	
-	// generate getter and setter
-	public int getRADIUS() {
-		return RADIUS;
+	public void setNumber(Integer number) {
+		this.number = number;
 	}
-	public void setRADIUS(int rADIUS) {
-		RADIUS = rADIUS;
+	public Text getText() {
+		return text;
 	}
-	public Integer getSearchNum() {
-		return searchNum;
+	public void setText(Text text) {
+		this.text = text;
 	}
-	public void setSearchNum(int searchNum) {
-		this.searchNum = searchNum;
+	public Integer getXx() {
+		return xx;
 	}
-	public Point2D getPoint() {
-		return point;
+	public void setXx(Integer xx) {
+		this.xx = xx;
 	}
-	public void setPoint(Point2D point) {
-		this.point = point;
+	public Integer getYy() {
+		return yy;
 	}
-	public Color getBackgroundColor() {
-		return backgroundColor;
-	}
-	public void setBackgroundColor(Color backgroundColor) {
-		this.backgroundColor = backgroundColor;
-	}
-	public Color getBorderColor() {
-		return borderColor;
-	}
-	public void setBorderColor(Color borderColor) {
-		this.borderColor = borderColor;
-	}
-	public Color getFontColor() {
-		return fontColor;
-	}
-	public void setFontColor(Color fontColor) {
-		this.fontColor = fontColor;
+	public void setYy(Integer yy) {
+		this.yy = yy;
 	}
 	
-	//generate constructor
-	public Square(Integer searchNum) {
+	
+	public Square() {
 		super();
-		this.searchNum = searchNum;
-		this.backgroundColor = Color.GREEN;
-		this.borderColor = Color.BLUE;
-		this.fontColor = Color.web("#FCFCFC");
 	}
-	public Square(Integer searchNum, Point2D point) {
+	public Square(Integer number) {
 		super();
-		this.searchNum = searchNum;
-		this.point = point;
-		this.backgroundColor = Color.GREEN;
-		this.borderColor = Color.BLUE;
-		this.fontColor = Color.web("#FCFCFC");
-	}
-	
-	
-	
-	public String getKey() {
-		return Integer.toString(getSearchNum());
-	}
-	
-	//change color object square	
-	public void searchNumber(GraphicsContext gc) {
-		gc.setLineWidth(5);
-		gc.setFill(Color.RED);
-		gc.fillRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
-		gc.setStroke(Color.YELLOW);
+		this.number = number;
+		this.setFill(Color.web("#A7FF71"));//set ben trong
+		this.setStroke(Color.web("#ff5050"));// set vien
+		this.setStrokeWidth(3);// set do rong cua vien
 		
-		// Outline the square border
-		gc.strokeRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
-		// Draw the id number inside the circle
-		gc.setFont(font);
-		gc.setFill(getFontColor());
-		gc.fillText(getKey(),point.getX()-10, point.getY()+5);
-	}
-	public void changeColorSquare(GraphicsContext gc) {
-		gc.setLineWidth(5);
-		gc.setFill(Color.RED);
-		gc.fillRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
-		gc.setStroke(Color.YELLOW);
+		//set chieu dai, chieu rong
+		this.setWidth(60);
+		this.setHeight(60);
+		this.setArcHeight(15);
+		this.setArcWidth(15);
 		
-		// Outline the square border
-		gc.strokeRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
-		// Draw the id number inside the circle
-		gc.setFont(font);
-		gc.setFill(getFontColor());
-		gc.fillText(getKey(),point.getX()-10, point.getY()+5);
-	}
-
-	public void changeColorBorder(GraphicsContext gc) {
-		gc.setLineWidth(5);
-		gc.setFill(Color.GREEN);
-		gc.fillRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
-		gc.setStroke(Color.ORANGE);
-		
-		gc.strokeRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
-		// Draw the id number inside the circle
-		gc.setFont(font);
-		gc.setFill(getFontColor());
-		gc.fillText(getKey(),point.getX()-10, point.getY()+5);
+		this.text = new Text(number.toString());
+		text.setFont(Font.font(20));
+		text.setStroke(Color.BLACK);
 	}
 	
-	public void deleteSquare(GraphicsContext gc) {
-		gc.setLineWidth(7);
-		gc.setFill(Color.web("#F5F5F5"));
-		gc.fillRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
-		gc.setStroke(Color.web("#F5F5F5"));
-		gc.strokeRoundRect(point.getX() - RADIUS,point.getY() - RADIUS, 60, 60, 10, 10);
-		gc.setFont(null);
-		//gc.setFill(null);
-		gc.fillText("", point.getX()-10, point.getY()+5);
+	public Square(Integer number, Integer layoutX, Integer layoutY) {
+		super();
+		this.number = number;
+		this.xx = layoutX;
+		this.yy = layoutY;
+		this.setFill(Color.web("#B9FC90"));
+		this.setStroke(Color.web("#ff5050"));
+		this.setStrokeWidth(3);
+		
+		//set chieu dai, chieu rong
+		this.setWidth(60);
+		this.setHeight(60);
+		this.setArcHeight(15);
+		this.setArcWidth(15);
+		
+		this.text = new Text(number.toString());
+		text.setFont(Font.font(20));
+		text.setStroke(Color.BLACK);
+	}
+	
+	public void changeBackGround(Color color) {
+		this.setFill(color);
+	}
+	
+	public void changeBorder(Color color) {
+		this.setStroke(color);
+	}
+	
+	public void delete() {
+		this.setFill(null);
+		this.setStroke(null);
+		this.text.setVisible(false);
 	}
 	
 	@Override
-	public String toString() {
-		
-		return "Search Num# " + searchNum  + 
-				" (x,y) = ("  + point.getX() + ", " + point.getY() + ")";
+	public int compareTo(Square square) {
+		return this.getNumber()<square.getNumber()?1:-1;
 	}
+	
+	
 }
-
-
-
-
-
-
-
-
-
-
-

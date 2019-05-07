@@ -2,14 +2,14 @@ package sequentialSearch;
 
 import java.util.ArrayList;
 
-import shape.CircleK;
+import shape.Square;
 
 public class SequentialSearch {
-	public int sequentialSearch(ArrayList<CircleK> arrayCircleK, int x) {
-		int n = arrayCircleK.size(); 
+	public int sequentialSearch(ArrayList<Square> arraySquare, int x) {
+		int n = arraySquare.size(); 
 	    for(int i = 0; i < n; i++) 
 	    { 
-	        if(arrayCircleK.get(i).getNumber() == x) 
+	        if(arraySquare.get(i).getNumber() == x) 
 	            return i; 
 	    } 
 	    return -1; 

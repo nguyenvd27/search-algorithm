@@ -14,7 +14,7 @@ public class Main extends Application {
 			//Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
 			Parent root = FXMLLoader.load(getClass().getResource("../view/MainScene.fxml"));
 			
-			Scene scene = new Scene(root,1100,700);
+			Scene scene = new Scene(root,1280,720);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("OOP Project");

@@ -48,7 +48,7 @@ public class SceneController {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../view/SequentialSearch.fxml"));
 		Parent sequentialSeach = loader.load();
-		Scene scene = new Scene(sequentialSeach,1100,700);
+		Scene scene = new Scene(sequentialSeach,1280,720);
 		scene.getStylesheets().add(getClass().getResource("../view/SequentialSearch.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setTitle("Sequential Search");
@@ -63,7 +63,7 @@ public class SceneController {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("../view/BinarySearch.fxml"));
 		Parent binarySeach = loader.load();
-		Scene scene = new Scene(binarySeach,1100,700);
+		Scene scene = new Scene(binarySeach,1280,720);
 		scene.getStylesheets().add(getClass().getResource("../view/SequentialSearch.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setTitle("Binary Search");
@@ -116,8 +116,6 @@ public class SceneController {
 		// goBack MainScene
 		Button goBackButton = new Button("BACK");
 		goBackButton.setOnAction(e -> {
-			
-			
 			try {
 				Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
 				FXMLLoader loader = new FXMLLoader();
@@ -131,7 +129,6 @@ public class SceneController {
 				// TODO: handle exception
 				ez.printStackTrace();
 			}
-			
 		});
 				
 		// remove obstacles on the grid

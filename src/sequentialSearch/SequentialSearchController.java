@@ -98,8 +98,8 @@ public class SequentialSearchController {
 	        timeline.setCycleCount(Timeline.INDEFINITE);
 	        timeline.setAutoReverse(true);
 	        //create a keyValue with factory: scaling the square 2times
-	        KeyValue keyValueX = new KeyValue(arraySquare.get(result).scaleXProperty(), 1.25);
-	        KeyValue keyValueY = new KeyValue(arraySquare.get(result).scaleYProperty(), 1.25);
+	        KeyValue keyValueX = new KeyValue(arraySquare.get(result).scaleXProperty(), 1.5);
+	        KeyValue keyValueY = new KeyValue(arraySquare.get(result).scaleYProperty(), 1.5);
 	        //create a keyFrame, the keyValue is reached at time 2s
 	        Duration duration = Duration.millis(1000);
 	        KeyFrame keyFrame = new KeyFrame(duration , keyValueX, keyValueY);
@@ -109,54 +109,58 @@ public class SequentialSearchController {
 		}
 		 
 		//Drawing a Square
-		  if(result>=0) {
-			  square = new Square(arraySquare.get(result).getNumber(),100,100);
-		  }else {
-			  square = new Square(search,100,100);
-		  }
+		if(square.getNumber()!=null) {
+			square.delete();
+		}
+		
+		if(result>=0) {
+			square = new Square(arraySquare.get(result).getNumber(),100,100);
+		}else {
+			square = new Square(search,100,100);
+		}
 	      
-	      square.setWidth(60);
-	      square.setHeight(60);
-	      square.setFill(Color.web("#B9FC90"));
+	    square.setWidth(60);
+	    square.setHeight(60);
+	    square.setFill(Color.web("#B9FC90"));
 	      
-	      StackPane stackPane = new StackPane();
-		  stackPane.getChildren().addAll(square,square.getText());
-		  stackPane.setLayoutX(100);
-		  stackPane.setLayoutY(100);
-		  paneShow.getChildren().add(stackPane);
+	    StackPane stackPane = new StackPane();
+		stackPane.getChildren().addAll(square,square.getText());
+		stackPane.setLayoutX(100);
+		stackPane.setLayoutY(100);
+		paneShow.getChildren().add(stackPane);
 			
-	      TranslateTransition translateTransition = new TranslateTransition(); 
+	    TranslateTransition translateTransition = new TranslateTransition(); 
 	      
-	      //Setting the duration of the transition  
-	      translateTransition.setDuration(Duration.millis(4000)); 
-	      translateTransition.setNode(square); 
-	      //Setting the value of the transition along the x axis. 
-	      if(result>=0) {
-	    	  translateTransition.setByX(80*result);
-	      }else {
-	    	  translateTransition.setByX(80*size);
-	      }
+	    //Setting the duration of the transition  
+	    translateTransition.setDuration(Duration.millis(4000)); 
+	    translateTransition.setNode(square); 
+	    //Setting the value of the transition along the x axis. 
+	    if(result>=0) {
+	    	translateTransition.setByX(80*result);
+	    }else {
+	    	translateTransition.setByX(80*size);
+	    }
 	       
-	      //Setting the cycle count for the transition 
-	      translateTransition.setCycleCount(50); 
-	      //Setting auto reverse value to false 
-	      translateTransition.setAutoReverse(false); 
+	    //Setting the cycle count for the transition 
+	    translateTransition.setCycleCount(50); 
+	    //Setting auto reverse value to false 
+	    translateTransition.setAutoReverse(false); 
 	      
-	      //Playing the animation 
-	      translateTransition.play(); 
+	    //Playing the animation 
+	    translateTransition.play(); 
 	      
-	      //Cho text chay
-	      TranslateTransition translateTransition2 = new TranslateTransition(); 
-	      translateTransition2.setDuration(Duration.millis(4000)); 
-	      translateTransition2.setNode(square.getText()); 
-	      if(result>=0) {
-	    	  translateTransition2.setByX(80*result);
-	      }else {
-	    	  translateTransition2.setByX(80*size);
-	      }
-	      translateTransition2.setCycleCount(50); 
-	      translateTransition2.setAutoReverse(false); 
-	      translateTransition2.play(); 
+	    //Cho text chay
+	    TranslateTransition translateTransition2 = new TranslateTransition(); 
+	    translateTransition2.setDuration(Duration.millis(4000)); 
+	    translateTransition2.setNode(square.getText()); 
+	    if(result>=0) {
+	    	translateTransition2.setByX(80*result);
+	    }else {
+	    	translateTransition2.setByX(80*size);
+	    }
+	    translateTransition2.setCycleCount(50); 
+	    translateTransition2.setAutoReverse(false); 
+	    translateTransition2.play(); 
 	}
 	
 	int xnext=100,ynext=100;

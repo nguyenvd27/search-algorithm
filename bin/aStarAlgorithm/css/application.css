@@ -10,28 +10,30 @@
     -fx-background-color:derive(red,0.9);
 }
 .open {
-    -fx-background-color: rgba(255,0,0,0.1);
+    /*-fx-background-color: rgba(255,0,0,0.1);*/
+    -fx-background-color: #99ccff;
 }
 .closed {
-    -fx-background-color: rgba(0,255,0,0.1);
-    /*-fx-background-color: red;*/
+    /*-fx-background-color: rgba(0,255,0,0.1);*/
+    -fx-background-color: #cc6699;
 }
 /* important order: path must be after open and closed because a cell can be both. the last in the css overlaps the previous styles, no matter how you add them to the styleclass list */
 .path {
-    -fx-background-color:derive(dodgerblue,0.9);
-    /*-fx-background-color:#A7FF71;*/
+    /*-fx-background-color:derive(dodgerblue,0.9);*/
+    -fx-background-color:#A7FF71;
 }
 /* important order: traversable must be after path because a cell can be both. the last in the css overlaps the previous styles, no matter how you add them to the styleclass list. traversable overrides path when you paint over a path */
 .traversable {
-    -fx-border-color: dodgerblue;
-    -fx-border-width: 0.7px;
+    /*-fx-border-color: dodgerblue;*/
+    -fx-border-color: yellow;
+    -fx-border-width: 1px;
 }
 /* important order: obstacle must be after path because a cell can be both. the last in the css overlaps the previous styles, no matter how you add them to the styleclass list. obstacle overrides path when you paint over a path */
 .obstacle {
     -fx-border-color: black;
     -fx-border-width: 0.5px;
-    -fx-background-color:derive(black,0.7);
-    -fx-text-fill: white;
+    -fx-background-color:derive(black,0.9);
+    -fx-text-fill: black;
 }
 .label-f {
 	-fx-font-size: 22;
@@ -45,7 +47,7 @@
 }
 
 
-/* 
+
 .root {
 	-fx-background-image: url("../../../src/view/abc.jpg");
 	-fx-background-repeat: no-repeat;
@@ -53,6 +55,7 @@
 }
 
 .button {
+	-fx-padding: 15;
 	-fx-background-color: #666699;
 	-fx-border-width: 2;
     -fx-border-color: #ffff99;
@@ -90,4 +93,3 @@
 .label {
 	-fx-text-fill: white;
 }
-*/

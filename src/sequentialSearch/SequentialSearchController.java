@@ -3,8 +3,13 @@ package sequentialSearch;
 import sequentialSearch.SequentialSearch;
 
 import java.io.IOException;
+import java.net.URL;
+
 import javafx.util.Duration;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import javafx.fxml.Initializable;
 
 import shape.*;
 import javafx.animation.KeyFrame;
@@ -25,7 +30,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class SequentialSearchController {
+public class SequentialSearchController implements Initializable {
 	
 	@FXML
 	private AnchorPane paneShow;
@@ -41,7 +46,7 @@ public class SequentialSearchController {
 	private AnchorPane paneRun;
 	
 	int array[]=new int[20];
-	int size;
+	int size=10;
 	int search;
 	int x=100,y=0;// xac dinh toa do cua square theo truc Oxy
 	//tao object newSquare, square
@@ -49,6 +54,25 @@ public class SequentialSearchController {
 	Square square = new Square();
 	//tao arrayList arraySquare de luu danh sach object Square
 	ArrayList<Square> arraySquare = new ArrayList<>();
+	
+	int defaultArray[] = {23,12,4,1,6,87,54,89,5,9};
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		int xzz = 100;
+		for(int i=0;i<10;i++) {
+			Square newSquare = new Square(defaultArray[i],xzz,0);
+			arraySquare.add(newSquare);
+			xzz+=80;
+		}
+		for(Square square: arraySquare) {
+			StackPane stackPane = new StackPane();
+			stackPane.getChildren().addAll(square, square.getText());
+			stackPane.setLayoutX(square.getXx());
+			stackPane.setLayoutY(square.getYy());
+			paneShow.getChildren().add(stackPane);
+		}
+	}
 	
 	//ham goi khi nhap mang
 	public void ArrayInput(ActionEvent event) {
@@ -214,19 +238,31 @@ public class SequentialSearchController {
 	}
 	
 	public void reset(ActionEvent event) {
-		System.out.println("Hello");
 		for(Square square: arraySquare) {
 			square.delete();
 		}
 		arraySquare.clear();
 		x=100;xnext=100;dem=0;
-		square.delete();
+		if(square.getNumber()!=null) {
+			square.delete();
+		}
 		if(newSquare.getNumber()!=null) {
 			newSquare.delete();
 		}
 		
 		nextButton.setVisible(true);
 		showKetQua.setText("");
+	}
+	
+	public void delete(ActionEvent event) {
+		reset(event);
+		if(arrayTextField.getText().equals("")) {
+			URL location = null;
+			ResourceBundle resources = null;
+			initialize(location, resources);
+		}else {
+			ArrayInput(event);
+		}
 	}
 	
 	//tro ve scene truoc

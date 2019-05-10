@@ -4,9 +4,12 @@ import shape.*;
 import binarySearch.BinarySearch;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Random;
+import java.util.ResourceBundle;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -14,6 +17,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,7 +29,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class BinarySearchController {
+public class BinarySearchController implements Initializable{
 	@FXML
 	private AnchorPane paneShow;
 	
@@ -43,11 +47,31 @@ public class BinarySearchController {
 	private Label showKetQua;
 	
 	int array[]=new int[100];
-	int size,left=0,right=0;
+	int size=10,left=0,right=size-1;
 	int search;
 	int x=100,y=0;
 	ArrayList<Square> arraySquare = new ArrayList<>();
 	ArrayList<Square> arraySquareSorted = new ArrayList<>();//arraList da sap xep
+	
+	int defaultArray[] = {23,12,4,1,6,87,54,89,5,9};
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		int xzz = 100;
+		for(int i=0;i<10;i++) {
+			Square newSquare = new Square(defaultArray[i],xzz,0);
+			arraySquare.add(newSquare);
+			arraySquareSorted.add(newSquare);
+			xzz+=80;
+		}
+		for(Square square: arraySquare) {
+			StackPane stackPane = new StackPane();
+			stackPane.getChildren().addAll(square, square.getText());
+			stackPane.setLayoutX(square.getXx());
+			stackPane.setLayoutY(square.getYy());
+			paneShow.getChildren().add(stackPane);
+		}
+	}
+	
 	public void ArrayInput(ActionEvent event) {
 		String[] strArray = (arrayTextField.getText()).split(",");
 		size = strArray.length;
@@ -207,6 +231,17 @@ public class BinarySearchController {
 		rightLabel.setText("RIGHT: ");
 		midLabel.setText("MID: ");
 		showKetQua.setText("");
+	}
+	
+	public void delete(ActionEvent event) {
+		reset(event);
+		if(arrayTextField.getText().equals("")) {
+			URL location = null;
+			ResourceBundle resources = null;
+			initialize(location, resources);
+		}else {
+			ArrayInput(event);
+		}
 	}
 	
 	public void goBack(ActionEvent event) throws IOException {
